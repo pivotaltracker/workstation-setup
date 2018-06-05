@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.pivotaltracker.workstationsetup.clear_pairs_and_logs</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>bash</string>
+      <string>-c</string>
+      <string>source /Users/pivotal/.bash_profile && /Users/pivotal/workspace/workstation-setup/clear_pairs_and_logs.rb</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/tmp/com.pivotaltracker.workstationsetup.clear_pairs_and_logs.log</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/com.pivotaltracker.workstationsetup.clear_pairs_and_logs.log</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+      <key>Hour</key>
+      <integer>7</integer>
+      <key>Minute</key>
+      <integer>45</integer>
+    </dict>
+  </dict>
+</plist>

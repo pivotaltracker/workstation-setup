@@ -1,0 +1,30 @@
+# git aliases
+alias gap="git add -p"
+alias gbd="git log --left-right --graph --cherry-pick --oneline" # usage: gbd master..prod-release-201YMMDD
+alias gcia="git duet-commit --amend -Chead"
+alias gcra="git duet-commit --amend --reset-author --no-verify"
+alias gp="git push"
+alias gpp="git pull --rebase=preserve && git push"
+alias gst="git status"
+alias gclc="git co lib/canonical_api_examples"
+
+alias gps="bundle exec git pflow-start"
+alias gpub="bundle exec git pflow-publish"
+alias gpu="bundle exec git pflow-update"
+alias gpe="bundle exec git pflow-end"
+alias gpr="bundle exec git pflow-reset"
+
+alias duet="git duet -g"
+alias solo="git solo -g"
+alias shipit="git pull --rebase=preserve && rake && git push"
+
+alias brew_uu="brew update && brew cask update && brew upgrade --all && brew cleanup && brew doctor"
+alias devdb="mysql -uroot -ppassword t2_dev"
+alias show="ps auxww | grep -v grep | grep -"
+alias plocal="cd ${WORKSPACE}/tracker && bin/foreman start"
+alias ppmem="cd ${WORKSPACE}/tracker && bin/foreman start -f Procfile.passenger_and_memcache"
+alias cfta="cf target -s tracker -o alpha"
+alias cftd="cf target -s tracker -o demo"
+alias cfto="cf target -s tracker -o omega"
+alias cftp="cf target -s tracker -o production"
+alias cfts="cf target -s tracker -o staging"
