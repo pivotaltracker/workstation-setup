@@ -10,7 +10,7 @@ class UnixTracker < TrackerConfigurationBase
       ack
       automake
       awscli
-      bash-completion
+      bash
       carthage
       cloudfoundry/tap/cf-cli
       cmake
@@ -45,7 +45,7 @@ class UnixTracker < TrackerConfigurationBase
       memcached
       mogenerator
       mysql@5.7
-      neovim/neovim
+      neovim
       parallel
       phantomjs
       pkill
