@@ -7,6 +7,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
 
   def run
     things = %w(
+      atom
       chromedriver
       clipy
       free-ruler
@@ -15,6 +16,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
       spectacle
       the-unarchiver
       vagrant
+      visual-studio-code
       xquartz
       xscope
     )
