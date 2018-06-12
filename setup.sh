@@ -60,6 +60,10 @@ source ${MY_DIR}/scripts/common/unix.sh
 ${MY_DIR}/scripts/tracker/unix.rb
 
 source ${MY_DIR}/scripts/common/configuration-osx.sh
+
+# Do configuration of macOS specific to Tracker.
+${MY_DIR}/scripts/tracker/configuration-osx.rb
+
 source ${MY_DIR}/scripts/common/configurations.sh
 
 # Install necessary ruby gems
