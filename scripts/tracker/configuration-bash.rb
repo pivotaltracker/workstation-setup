@@ -31,7 +31,15 @@ class ConfigureBashTracker < TrackerConfigurationBase
     FileUtils.move("#{home}/.new_bash_profile", "#{home}/.bash_profile")
 
     # Install custom bash_it extensions
-    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/custom", "#{home}/.bash_it/custom", remove_destination: true)
+    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/custom/.", "#{home}/.bash_it/custom", remove_destination: true)
+
+    # Enable bash-it components
+    process_bash_it('enable alias bundler')
+    process_bash_it('enable completion git')
+    process_bash_it('enable completion ssh')
+    process_bash_it('enable plugin alias-completion')
+    process_bash_it('enable plugin docker')
+    process_bash_it('enable plugin ssh')
   end
 
   def process_bash_it(command)
