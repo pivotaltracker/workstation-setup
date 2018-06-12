@@ -6,7 +6,7 @@ This project automates the process of setting up a new Pivotal machine using a s
 
 ## Getting Started
 
-* Follow the steps in [Image a Workstation](https://github.com/pivotaltracker/tracker-docs/blob/master/image-a-workstation.md).
+* Follow the steps in [Image a Workstation](https://github.com/pivotaltracker/tracker-docs/blob/eb524292dfc3ba277fc946a6dfc63cd81f632a62/general/image-a-workstation.md).
 * Open up Terminal.app and run the following command:
 
 ```sh
