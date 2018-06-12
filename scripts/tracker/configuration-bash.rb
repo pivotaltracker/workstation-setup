@@ -18,7 +18,7 @@ class ConfigureBashTracker < TrackerConfigurationBase
     FileUtils.copy("#{repo_root}/files/tracker/.inputrc", "#{home}/.inputrc")
 
     # Install our theme
-    FileUtils.cp_r("#{repo_root}/files/tracker/bobby-tracker", "#{home}/.bash_it/themes")
+    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/themes/bobby-tracker", "#{home}/.bash_it/themes")
     updated_bash_profile = File.new("#{home}/.new_bash_profile", 'wb')
     File.readlines("#{home}/.bash_profile").each do |line|
       if line =~ /^export BASH_IT_THEME=/
@@ -28,8 +28,10 @@ class ConfigureBashTracker < TrackerConfigurationBase
       end
     end
     updated_bash_profile.close
-
     FileUtils.move("#{home}/.new_bash_profile", "#{home}/.bash_profile")
+
+    # Install custom bash_it extensions
+    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/custom", "#{home}/.bash_it/custom", remove_destination: true)
   end
 
   def process_bash_it(command)

@@ -6,7 +6,7 @@
 #   - a list of components to install, see scripts/opt-in/ for valid options
 #
 # Environment variables:
-#   - SKIP_ANALYTICS:  Set this to 1 to not send usuage data to our Google Analytics account 
+#   - SKIP_ANALYTICS:  Set this to 1 to not send usage data to our Google Analytics account
 #
 
 # Fail immediately if any errors occur
@@ -61,6 +61,9 @@ ${MY_DIR}/scripts/tracker/unix.rb
 
 source ${MY_DIR}/scripts/common/configuration-osx.sh
 source ${MY_DIR}/scripts/common/configurations.sh
+
+# Install necessary ruby gems
+${MY_DIR}/scripts/tracker/ruby-gems.rb
 
 # For each command line argument, try executing the corresponding script in opt-in/
 #for var in "$@"
