@@ -51,7 +51,7 @@ class ConfigureOSXTracker < TrackerConfigurationBase
   end
 
   def process_dockutil(command)
-    return process("dockutil #{command}")
+    process("dockutil #{command}", puts_output: :error)
   end
 end
 
