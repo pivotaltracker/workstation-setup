@@ -10,9 +10,17 @@ class ConfigureBashTracker < TrackerConfigurationBase
     process_bash_it('disable plugin rbenv')
     process('brew unlink rbenv')
 
-    # Install RVM
-    process("\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --with-gems='bundler rake'")
+    # Install RVM (receive the GPG key if necessary)
+    has_gpg = process('which gpg', expected_exit_status: [0, 1])
+    unless has_gpg.empty?
+      process('gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3')
+    end
+    process("\\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --with-gems='bundler rake'")
     process_bash_it('enable plugin rvm')
+
+    # Install brew Ruby and process_helper in the brew-installed version
+    brew_install('ruby')
+    process('gem install process_helper')
 
     # Install our .inputrc file
     FileUtils.copy("#{repo_root}/files/tracker/.inputrc", "#{home}/.inputrc")

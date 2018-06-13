@@ -58,7 +58,7 @@ source ${MY_DIR}/scripts/common/unix.sh
 
 # Install the Tracker command line applications.
 ${MY_DIR}/scripts/tracker/unix.rb
-
+#######failing here..
 source ${MY_DIR}/scripts/common/configuration-osx.sh
 
 # Do configuration of macOS specific to Tracker.
