@@ -10,6 +10,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
       atom
       chromedriver
       clipy
+      docker
       free-ruler
       google-cloud-sdk
       java
