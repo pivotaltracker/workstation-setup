@@ -41,6 +41,15 @@ brew cask install zoomus
 source ${MY_DIR}/scripts/common/git.sh
 
 # Run our custom git configuration script.
+set +e
+source "${HOME}/.bash_profile"
+set -e
+echo "Enter your username for LastPass login (without @pivotal.io):"
+read username
+
+# TODO: try to use the alias instead of this.
+_load_github_ssh_key_from_lastpass ${username}
+
 ${MY_DIR}/scripts/tracker/git.rb
 
 source ${MY_DIR}/scripts/common/git-aliases.sh
