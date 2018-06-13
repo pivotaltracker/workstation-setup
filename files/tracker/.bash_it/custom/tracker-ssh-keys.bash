@@ -52,8 +52,6 @@ function _load_github_ssh_key_from_lastpass() {
   fi
 
   tmpdir=$(mktemp -d -t lpass)
-  export LPASS_HOME=$tmpdir
-  export LPASS_AGENT_DISABLE=1
 
   trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 
@@ -68,10 +66,7 @@ function _load_github_ssh_key_from_lastpass() {
   lpass show --notes "${note_name}" > "${HOME}/.config/hub"
 
   # Clean up
-  rm -rf "${tmpdir}"
-  unset LPASS_HOME
-  unset LPASS_AGENT_DISABLE
-  trap - EXIT INT TERM HUP
+  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 }
 
 alias nonprod='_load_ssh_key_from_lastpass nonprod'
