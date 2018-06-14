@@ -13,7 +13,8 @@ class ConfigureBashTracker < TrackerConfigurationBase
     # Install RVM (receive the GPG key if necessary)
     has_gpg = process('which gpg', expected_exit_status: [0, 1])
     unless has_gpg.empty?
-      process('gpg --keyserver hkp://pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB')
+      process_without_output('curl -o /tmp/mpapis.asc -#LO https://rvm.io/mpapis.asc')
+      process_without_output('gpg --import /tmp/mpapis.asc')
     end
     process("\\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --with-gems='bundler rake'")
     process_bash_it('enable plugin rvm')

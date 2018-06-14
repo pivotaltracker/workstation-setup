@@ -18,4 +18,8 @@ class TrackerConfigurationBase
   def brew_cask_install(app)
     process("brew cask install #{app}")
   end
+
+  def process_without_output(command)
+    process(command, puts_output: :error)
+  end
 end

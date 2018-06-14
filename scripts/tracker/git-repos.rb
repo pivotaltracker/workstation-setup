@@ -25,15 +25,13 @@ class GitReposTracker < TrackerConfigurationBase
 
     go_repos = %w(gogator gusher)
     go_repos.each do |repo|
-      clone_git_repo('pivotaltracker', repo, path = "~/go/src/github.com/pivotaltracker/#{repo}")
+      clone_git_repo('pivotaltracker', repo, "~/go/src/github.com/pivotaltracker/#{repo}")
     end
 
-    direnv_allow_repos = %w(tracker tracker-concourse)
-    direnv_allow_repos.each do |repo|
-      clone_git_repo('pivotaltracker', repo, "~/workspace/#{repo}", post_clone_command = 'direnv allow')
-    end
+    clone_git_repo('pivotaltracker', 'tracker-concourse', '~/workspace/tracker-concourse', 'direnv allow')
 
-    clone_git_repo('pivotaltracker', 'tracker', '~/workspace/alt-tracker', post_clone_command = 'direnv allow')
+    clone_git_repo('pivotaltracker', 'tracker', '~/workspace/tracker', 'direnv allow', 'apps/tracker-web')
+    FileUtils.cp_r("#{home}/workspace/tracker/.", "#{home}/workspace/tracker-alt")
 
     clone_git_repo(
       'pivotaltracker',
@@ -43,16 +41,16 @@ class GitReposTracker < TrackerConfigurationBase
     )
   end
 
-  def clone_git_repo(org, repo_name, target_path, post_clone_command = '')
+  def clone_git_repo(org, repo_name, target_path, post_clone_command = '', post_clone_command_directory = '')
     # Don't clone if it's already there.
     path = File.expand_path(target_path)
     return if Dir.exist?(path)
 
     puts "Cloning repo: #{org}/#{repo_name} into #{path}"
-    process("git clone git@github.com:#{org}/#{repo_name}.git #{path}", puts_output: :error)
+    process_without_output("git clone git@github.com:#{org}/#{repo_name}.git #{path}")
 
     unless post_clone_command.empty?
-      FileUtils.cd(path) do
+      FileUtils.cd(File.join(path, post_clone_command_directory)) do
         process(post_clone_command)
       end
     end

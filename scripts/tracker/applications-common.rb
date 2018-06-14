@@ -12,6 +12,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
       clipy
       docker
       free-ruler
+      google-chrome-canary
       google-cloud-sdk
       java
       spectacle

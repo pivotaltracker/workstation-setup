@@ -11,6 +11,15 @@ class ConfigureOSXTracker < TrackerConfigurationBase
     process('defaults write com.apple.menuextra.clock "DateFormat" "MMM d h:mm:ss a"')
     process('killall SystemUIServer')
 
+    # Wait for the dock process to restart
+    dock_down = true
+    while dock_down
+      output = process('pgrep Dock', expected_exit_status: [0, 1])
+      dock_down = output.empty?
+      puts 'dock is down, retrying...' if dock_down
+      sleep 1
+    end
+
     # Modify appearance of dock
     # remove existing icons
     process_dockutil('--remove spacer-tiles --no-restart')
@@ -51,7 +60,7 @@ class ConfigureOSXTracker < TrackerConfigurationBase
   end
 
   def process_dockutil(command)
-    process("dockutil #{command}", puts_output: :error)
+    process_without_output("dockutil #{command}")
   end
 end
 
