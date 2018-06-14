@@ -14,6 +14,23 @@ class ConfigureGitTracker < TrackerConfigurationBase
     set_git_config('push.default', 'current')
     set_git_config('user.email', 'labs-tracker-team@pivotal.io')
     set_git_config('user.name', 'Pivotal Tracker')
+
+    # Load in the known hosts (note we cannot copy from files/tracker/.ssh
+    # because of permissions and we don't want to override)
+    FileUtils.mkdir_p("#{home}/.ssh", mode: 0700)
+    known_hosts = "#{home}/.ssh/known_hosts"
+    FileUtils.touch(known_hosts)
+    FileUtils.chmod(0600, known_hosts)
+    File.readlines("#{repo_root}/files/tracker/.ssh/known_hosts").each do |line|
+      host_matched = File.readlines(known_hosts).any? do |known_host|
+        known_host == line
+      end
+      unless host_matched
+        File.open(known_hosts, 'a') do |file|
+          file.puts(line)
+        end
+      end
+    end
   end
 
   def set_git_config(key, value)
