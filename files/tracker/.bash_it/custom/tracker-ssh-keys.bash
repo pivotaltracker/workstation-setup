@@ -44,29 +44,28 @@ function _load_ssh_key_from_lastpass() {
 
 function _load_github_ssh_key_from_lastpass() {
   username=$1
-  note_name=tracker-common
+  note_path="Shared-Tracker Team - General/tracker-common"
 
   if [ -z "${username}" ]; then
     echo "Must supply your lastpass login without '@pivotal.io'. E.g. 'goppegard'."
     return
   fi
 
-  tmpdir=$(mktemp -d -t lpass)
+  private_key_path=$(mktemp)
 
-  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
+  trap 'lpass logout --force;' EXIT INT TERM HUP
 
-  private_key_path="${tmpdir}/${note_name}"
   lifetime='10H'
 
   mkfifo -m 0600 "${private_key_path}"
   lpass login "${username}@pivotal.io"
-  lpass show --field="Private Key" "${note_name}" > "${private_key_path}" &
+  lpass show --field="Private Key" "${note_path}" > "${private_key_path}" &
   ssh-add -t "${lifetime}" "${private_key_path}"
 
-  lpass show --notes "${note_name}" > "${HOME}/.config/hub"
+  lpass show --notes "${note_path}" > "${HOME}/.config/hub"
 
   # Clean up
-  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
+  trap 'lpass logout --force; rm -f "${private_key_path}"' EXIT INT TERM HUP
 }
 
 alias nonprod='_load_ssh_key_from_lastpass nonprod'
