@@ -58,7 +58,7 @@ source ${MY_DIR}/scripts/common/unix.sh
 
 # Install the Tracker command line applications.
 ${MY_DIR}/scripts/tracker/unix.rb
-#######failing here..
+
 source ${MY_DIR}/scripts/common/configuration-osx.sh
 
 # Do configuration of macOS specific to Tracker.
@@ -68,6 +68,19 @@ source ${MY_DIR}/scripts/common/configurations.sh
 
 # Install necessary ruby gems
 ${MY_DIR}/scripts/tracker/ruby-gems.rb
+
+# Log in to LastPass and pull down the private SSH key.
+set +e
+source "${HOME}/.bash_profile"
+set -e
+echo "Enter your username for LastPass login (without @pivotal.io):"
+read username
+
+# TODO: try to use the alias instead of this.
+_load_github_ssh_key_from_lastpass ${username}
+
+# Clone the Tracker repos.
+${MY_DIR}/scripts/tracker/git-repos.rb
 
 # For each command line argument, try executing the corresponding script in opt-in/
 #for var in "$@"

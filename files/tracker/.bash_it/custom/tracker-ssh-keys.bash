@@ -44,6 +44,7 @@ function _load_ssh_key_from_lastpass() {
 
 function _load_github_ssh_key_from_lastpass() {
   username=$1
+  note_name=tracker-common
 
   if [ -z "${username}" ]; then
     echo "Must supply your lastpass login without '@pivotal.io'. E.g. 'goppegard'."
@@ -51,30 +52,23 @@ function _load_github_ssh_key_from_lastpass() {
   fi
 
   tmpdir=$(mktemp -d -t lpass)
-  export LPASS_HOME=$tmpdir
-  export LPASS_AGENT_DISABLE=1
 
   trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 
-  private_key_name="${username}"
-  private_key_path="${tmpdir}/${private_key_name}"
+  private_key_path="${tmpdir}/${note_name}"
   lifetime='10H'
 
   mkfifo -m 0600 "${private_key_path}"
   lpass login "${username}@pivotal.io"
-  lpass show --field="Private Key" ${username} > "${private_key_path}" &
+  lpass show --field="Private Key" "${note_name}" > "${private_key_path}" &
   ssh-add -t "${lifetime}" "${private_key_path}"
-  echo "${username}" > "${HOME}/.tracker_user"
 
-  lpass show --notes ${username} > "${HOME}/.config/hub"
+  lpass show --notes "${note_name}" > "${HOME}/.config/hub"
 
   # Clean up
-  rm -rf "${tmpdir}"
-  unset LPASS_HOME
-  unset LPASS_AGENT_DISABLE
-  trap - EXIT INT TERM HUP
+  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 }
 
 alias nonprod='_load_ssh_key_from_lastpass nonprod'
 alias prod='_load_ssh_key_from_lastpass prod'
-alias github='_load_github_ssh_key_from_lastpass'
+alias loadkey='_load_github_ssh_key_from_lastpass'
