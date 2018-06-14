@@ -16,7 +16,6 @@ class UnixTracker < TrackerConfigurationBase
       cmake
       coreutils
       ctags
-      ctags-exuberant
       diff-so-fancy
       direnv
       dirmngr
@@ -48,7 +47,6 @@ class UnixTracker < TrackerConfigurationBase
       neovim
       parallel
       phantomjs
-      pkill
       proctools
       pstree
       qt
