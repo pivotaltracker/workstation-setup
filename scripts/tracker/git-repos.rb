@@ -31,7 +31,7 @@ class GitReposTracker < TrackerConfigurationBase
     clone_git_repo('pivotaltracker', 'tracker-concourse', '~/workspace/tracker-concourse', 'direnv allow')
 
     clone_git_repo('pivotaltracker', 'tracker', '~/workspace/tracker', 'direnv allow', 'apps/tracker-web')
-    FileUtils.cp_r("#{home}/workspace/tracker/.", "#{home}/workspace/tracker-alt")
+    clone_git_repo('pivotaltracker', 'tracker', '~/workspace/alt-tracker', 'direnv allow', 'apps/tracker-web')
 
     clone_git_repo(
       'pivotaltracker',
