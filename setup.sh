@@ -96,6 +96,9 @@ ${MY_DIR}/scripts/tracker/git-repos.rb
 #done
 
 source ${MY_DIR}/scripts/common/finished.sh
+
+${MY_DIR}/scripts/tracker/finished.rb
+
 if (( SKIP_ANALYTICS == 0 )); then
     source ${MY_DIR}/scripts/helpers/google-analytics.sh ${clientID} finish $@
 fi

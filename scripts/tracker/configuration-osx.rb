@@ -57,7 +57,7 @@ class ConfigureOSXTracker < TrackerConfigurationBase
   end
 
   def set_dark_mode
-    appearance_properties = process("osascript -e 'tell application \"System Events\" to tell appearance preferences to get properties'")
+    appearance_properties = process_without_output("osascript -e 'tell application \"System Events\" to tell appearance preferences to get properties'")
     dark_mode = appearance_properties =~ /dark mode:true/
     unless dark_mode
       process("osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode'")
