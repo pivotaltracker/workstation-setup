@@ -6,6 +6,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
   include ProcessHelper
 
   def run
+    process('brew tap homebrew/cask-versions')
     things = %w(
       atom
       chromedriver
