@@ -6,6 +6,8 @@ class ConfigureOSXTracker < TrackerConfigurationBase
   include ProcessHelper
 
   def run
+    set_dark_mode
+
     # Update the system clock
     # See http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
     process('defaults write com.apple.menuextra.clock "DateFormat" "MMM d h:mm:ss a"')
@@ -52,6 +54,14 @@ class ConfigureOSXTracker < TrackerConfigurationBase
 
   def process_dockutil(command)
     process_without_output("dockutil #{command}")
+  end
+
+  def set_dark_mode
+    appearance_properties = process("osascript -e 'tell application \"System Events\" to tell appearance preferences to get properties'")
+    dark_mode = appearance_properties =~ /dark mode:true/
+    unless dark_mode
+      process("osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode'")
+    end
   end
 end
 
