@@ -8,6 +8,9 @@ class ConfigureOSXTracker < TrackerConfigurationBase
   def run
     set_dark_mode
 
+    # Copy Library configurations
+    FileUtils.cp_r("#{repo_root}/files/tracker/Library/.", "#{home}/Library")
+
     # Update the system clock
     # See http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
     process('defaults write com.apple.menuextra.clock "DateFormat" "MMM d h:mm:ss a"')
