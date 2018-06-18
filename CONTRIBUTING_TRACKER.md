@@ -1,7 +1,7 @@
 # CONTRIBUTING
 
 This repo configures an OS X machine for Pivotal Tracker development. It was originally
-forked from [pivotal-legacy/workstation-setup](https://github.com/pivotal-legacy/workstation-setup).
+forked from [Pivotal/workstation-setup](https://github.com/Pivotal/workstation-setup).
 
 Please follow the guidelines in this doc when modifying it, to stay up-to-date with the upstream and miminize the chances of merge conflicts.
 
