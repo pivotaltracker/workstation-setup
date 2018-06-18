@@ -19,7 +19,7 @@ class TrackerConfigurationBase
     process("brew cask install #{app}")
   end
 
-  def process_without_output(command)
-    process(command, puts_output: :error)
+  def process_without_output(command, opts = {})
+    process(command, {puts_output: :error}.merge(opts))
   end
 end

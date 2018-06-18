@@ -7,16 +7,19 @@ class ConfigureBashTracker < TrackerConfigurationBase
 
   def run
     # Disable rbenv
-    process_bash_it('disable plugin rbenv')
-    process('brew unlink rbenv')
+    if process_exists?('rbenv')
+      process_bash_it('disable plugin rbenv')
+      process('brew unlink rbenv')
+    end
 
     # Install RVM (receive the GPG key if necessary)
-    has_gpg = process('which gpg', expected_exit_status: [0, 1])
-    unless has_gpg.empty?
-      process_without_output('curl -o /tmp/mpapis.asc -#LO https://rvm.io/mpapis.asc')
-      process_without_output('gpg --import /tmp/mpapis.asc')
+    unless process_exists?('rvm')
+      if process_exists?('gpg')
+        process_without_output('curl -o /tmp/mpapis.asc -#LO https://rvm.io/mpapis.asc')
+        process_without_output('gpg --import /tmp/mpapis.asc')
+      end
+      process("\\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --with-gems='bundler rake'")
     end
-    process("\\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles --with-gems='bundler rake'")
     process_bash_it('enable plugin rvm')
 
     # Install brew Ruby and process_helper in the brew-installed version
@@ -26,8 +29,10 @@ class ConfigureBashTracker < TrackerConfigurationBase
     # Install our .inputrc file
     FileUtils.copy("#{repo_root}/files/tracker/.inputrc", "#{home}/.inputrc")
 
+    # Install bash_it configs
+    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/.", "#{home}/.bash_it", remove_destination: true)
+
     # Install our theme
-    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/themes/bobby-tracker", "#{home}/.bash_it/themes")
     updated_bash_profile = File.new("#{home}/.new_bash_profile", 'wb')
     File.readlines("#{home}/.bash_profile").each do |line|
       if line =~ /^export BASH_IT_THEME=/
@@ -39,9 +44,6 @@ class ConfigureBashTracker < TrackerConfigurationBase
     updated_bash_profile.close
     FileUtils.move("#{home}/.new_bash_profile", "#{home}/.bash_profile")
 
-    # Install custom bash_it extensions
-    FileUtils.cp_r("#{repo_root}/files/tracker/.bash_it/custom/.", "#{home}/.bash_it/custom", remove_destination: true)
-
     # Enable bash-it components
     process_bash_it('enable alias bundler')
     process_bash_it('enable completion git')
@@ -51,8 +53,14 @@ class ConfigureBashTracker < TrackerConfigurationBase
     process_bash_it('enable plugin ssh')
   end
 
+  private
+
   def process_bash_it(command)
     process("bash -c \"source $HOME/.bash_profile && bash-it #{command}\"")
+  end
+
+  def process_exists?(process_name)
+    !process_without_output("which #{process_name}", expected_exit_status: [0, 1]).empty?
   end
 end
 
