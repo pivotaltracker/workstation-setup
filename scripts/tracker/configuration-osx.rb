@@ -55,7 +55,7 @@ class ConfigureOSXTracker < TrackerConfigurationBase
     process('killall Dock')
 
     # Setup the daily script
-    process("launchctl load -F #{repo_root}/files/tracker/com.pivotaltracker.workstationsetup.daily.plist")
+    process("launchctl load -w -F #{repo_root}/files/tracker/com.pivotaltracker.workstationsetup.daily.plist")
   end
 
   def process_dockutil(command)

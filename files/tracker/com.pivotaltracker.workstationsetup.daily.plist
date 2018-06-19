@@ -8,7 +8,7 @@
     <array>
       <string>bash</string>
       <string>-c</string>
-      <string>source /Users/pivotal/.bash_profile &amp;&amp; /Users/pivotal/workspace/workstation-setup/daily.rb</string>
+      <string>source /Users/pivotal/.bash_profile && /Users/pivotal/workspace/workstation-setup/daily.rb</string>
     </array>
     <key>StandardErrorPath</key>
     <string>/tmp/com.pivotaltracker.workstationsetup.daily.log</string>
