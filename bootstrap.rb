@@ -90,7 +90,7 @@ class BootstrapWorkstationSetup
     "#{home}/workspace/workstation-setup"
   end
 
-  def process_lite(cmd, raise_on_error: true, log: false, timeout: 10)
+  def process_lite(cmd, raise_on_error: true, log: false, timeout: 600)
     # A minimal implementation of what ProcessHelper does to use before it's installed
     puts cmd if log
     Open3.popen2e(cmd) do |_, stdout_and_stderr, wait_thr|
