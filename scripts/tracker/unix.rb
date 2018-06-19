@@ -71,6 +71,9 @@ class UnixTracker < TrackerConfigurationBase
     things.each do |thing|
       brew_install(thing)
     end
+
+    # Copy .vimrc file
+    FileUtils.copy("#{repo_root}/files/tracker/.vimrc", "#{home}/.vimrc")
   end
 end
 
