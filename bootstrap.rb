@@ -8,9 +8,9 @@ require 'timeout'
 class BootstrapWorkstationSetup
   def run
     sudoers_admin_nopasswd
-    bootstrap_process_helper
     install_command_line_tools
     clone_or_pull_repo
+    bootstrap_process_helper
   end
 
   private
@@ -21,30 +21,33 @@ class BootstrapWorkstationSetup
 
   def bootstrap_process_helper
     need_to_install_in_system_ruby = false
-    output, exitstatus = process_lite('gem install process_helper', raise_on_error: false)
+    process_helper_gem_package_path = Dir.glob(File.join(repo_root, 'files/gems/process_helper-*.gem')).first
+    cmd = "gem install #{process_helper_gem_package_path}"
+    output, exitstatus = process_lite(cmd, raise_on_error: false)
 
-    if exitstatus == 1 && output =~ /permission/i
-      need_to_install_in_system_ruby = true
+    unless exitstatus == 0
+      if output =~ /permission/i
+        need_to_install_in_system_ruby = true
+      else
+        raise "Install of local process_helper gem package failed with exitstatus #{exitstatus}. " \
+          " cmd: `#{cmd}`, output: #{output}"
+      end
     end
 
     if need_to_install_in_system_ruby
       # system ruby detected, installing process_helper via sudo...
       # TODO: `unalias gem` MAY be needed, not sure yet
-      process_lite('sudo gem install process_helper')
+      process_lite("sudo gem install #{process_helper_gem_package_path}")
     end
-
-    Gem.clear_paths
-    require 'process_helper'
-    self.class.send(:include, ProcessHelper)
   end
 
   def install_command_line_tools
     unless File.exist?('/Library/Developer/CommandLineTools')
       # fake that an install is in progress
-      process('touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress')
+      process_lite('touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress')
 
       # list available software
-      available_software = process("softwareupdate -l")
+      available_software, _ = process_lite("softwareupdate -l")
 
       # Get the last (should be latest version) entry for Command Line Tools
       software_name = available_software.split("\n")
@@ -53,7 +56,7 @@ class BootstrapWorkstationSetup
         .match(/.*?(Command Line Tools.*)$/)[1]
 
       # ...then install it
-      process("softwareupdate -i '#{software_name}' --verbose")
+      process_lite("softwareupdate -i '#{software_name}' --verbose")
     end
   end
 
@@ -62,18 +65,18 @@ class BootstrapWorkstationSetup
     if File.exist?(repo_root)
       FileUtils.cd(repo_root) do
         verify_clean_git
-        process("git checkout master")
-        process("git pull --rebase")
+        process_lite("git checkout master")
+        process_lite("git pull --rebase")
       end
     else
-      process("git clone https://github.com/pivotaltracker/workstation-setup.git #{home}/workspace/workstation-setup")
+      process_lite("git clone https://github.com/pivotaltracker/workstation-setup.git #{home}/workspace/workstation-setup")
     end
   end
 
   def verify_clean_git
-    begin
-      process("cd #{repo_root} && git status | grep -E '(to be committed|not staged|untracked)'", expected_exit_status: 1, out: :never)
-    rescue ProcessHelper::UnexpectedExitStatusError
+    _, exit_status = process_lite("cd #{repo_root} && git status | grep -E '(to be committed|not staged|untracked)'")
+    if exit_status == 0
+      # The exit status of the grep will be 0 only if one the repo is dirty.
       STDERR.puts "\nERROR: There are uncommitted, unstaged or untracked git changes in #{repo_root}.  Please do a `git status` and resolve them, then start over."
       exit 1
     end
