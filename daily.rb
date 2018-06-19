@@ -12,6 +12,10 @@ class Daily < TrackerConfigurationBase
     process("#{repo_root}/scripts/tracker/configuration-bash.rb")
     process('ssh-add -D')
     FileUtils.rm_f("#{home}/.config/hub")
+
+    # because launchd doesn't like it if a script takes under 10 seconds
+    # https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html
+    sleep 10
   end
 
   private
