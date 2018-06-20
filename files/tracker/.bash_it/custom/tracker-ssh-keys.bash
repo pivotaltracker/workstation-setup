@@ -51,7 +51,8 @@ function _load_github_ssh_key_from_lastpass() {
     return
   fi
 
-  private_key_path=$(mktemp)
+  tmpdir=$(mktemp -d -t lpass)
+  private_key_path="${tmpdir}/tracker-common"
 
   trap 'lpass logout --force;' EXIT INT TERM HUP
 
@@ -65,7 +66,7 @@ function _load_github_ssh_key_from_lastpass() {
   lpass show --notes "${note_path}" > "${HOME}/.config/hub"
 
   # Clean up
-  trap 'lpass logout --force; rm -f "${private_key_path}"' EXIT INT TERM HUP
+  trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 }
 
 alias nonprod='_load_ssh_key_from_lastpass nonprod'
