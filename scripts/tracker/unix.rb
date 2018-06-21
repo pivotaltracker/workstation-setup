@@ -53,7 +53,7 @@ class UnixTracker < TrackerConfigurationBase
       redis
       s3cmd
       shellcheck
-      solr
+      solr@6.6
       ssh-copy-id
       sshuttle
       the_platinum_searcher
@@ -67,6 +67,8 @@ class UnixTracker < TrackerConfigurationBase
       yarn
       zlib
     )
+
+    process("brew tap pivotaltracker/homebrew-tracker")
 
     things.each do |thing|
       brew_install(thing)

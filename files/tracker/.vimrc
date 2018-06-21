@@ -26,6 +26,7 @@ set mouse=a " enable mouse navigation
 set clipboard+=unnamed  " use the system clipboard
 set number
 set scrolloff=5
+set backspace=indent,eol,start
 
 " Keybindings
 " -----------
