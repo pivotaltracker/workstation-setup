@@ -80,6 +80,7 @@ _load_github_ssh_key_from_lastpass ${username}
 
 # Clone the Tracker repos.
 ${MY_DIR}/scripts/tracker/git-repos.rb
+${MY_DIR}/scripts/tracker/tracker-setup.rb
 
 # For each command line argument, try executing the corresponding script in opt-in/
 #for var in "$@"
