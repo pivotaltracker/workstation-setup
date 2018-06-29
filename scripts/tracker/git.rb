@@ -15,6 +15,7 @@ class ConfigureGitTracker < TrackerConfigurationBase
     set_git_config('user.email', 'labs-tracker-team@pivotal.io')
     set_git_config('user.name', 'Pivotal Tracker')
     process('git config --global --unset transfer.fsckobjects')
+    set_git_config('fsck.zeroPaddedFilemode', 'ignore')
 
     # Load in the known hosts (note we cannot copy from files/tracker/.ssh
     # because of permissions and we don't want to override)
