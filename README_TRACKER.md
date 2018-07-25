@@ -4,17 +4,27 @@ This project automates the process of setting up a new Pivotal machine using a s
 
 # PLEASE SEE [THE CONTRIBUTING_TRACKER.md DOC](CONTRIBUTING_TRACKER.md) BEFORE SUGGESTING CHANGES OR MODIFYING THIS REPO
 
-# Getting Started
+## Getting Started
+**We recommend you use the pre-created workstation-setup image on DeployStudio. To do so, please follow the steps in
+[Image a Workstation](https://github.com/pivotaltracker/tracker-docs/blob/master/general/image-a-workstation.md).**
 
-* Follow the steps in [Image a Workstation](https://docs.trackernonprod.com/#general/image-a-workstation/).
-* Open up Terminal.app and run the following command:
+### Manually running workstation-setup
+If you are developing workstation-setup or want to add customizations to it for your own laptop you will need to run
+workstation-setup manually.
 
-```sh
-curl -s https://raw.githubusercontent.com/pivotaltracker/workstation-setup/master/bootstrap.rb -o /tmp/bootstrap.rb && chmod +x /tmp/bootstrap.rb && /tmp/bootstrap.rb && cd ~/workspace/workstation-setup && ./setup.sh
-```
+1. Follow steps 1-8 in
+   [Image a Workstation](https://github.com/pivotaltracker/tracker-docs/blob/master/general/image-a-workstation.md).
+   However, on step 5, choose *Individual Workstation High Sierra*.
+1. Open up `Terminal.app` and run the following command:
 
-# Post-Install Steps Before Cutting an image
-Run these steps only if you are in the process of cutting a fresh image
+    ```sh
+    curl -s https://raw.githubusercontent.com/pivotaltracker/workstation-setup/master/bootstrap.rb -o /tmp/bootstrap.rb && chmod +x /tmp/bootstrap.rb && /tmp/bootstrap.rb && cd ~/workspace/workstation-setup && ./setup.sh
+    ```
+1. Follow the instructions in [Post-Install Steps Before Cutting an image](#post-install-steps-before-cutting-an-image)
+   and [Post-Imaging Steps](#post-imaging-steps).
+
+## Post-Install Steps Before Cutting an image
+Run these steps only if you are in the process of cutting a fresh DeployStudio image
 
 ## Workstation Setup Repo
 Change the remote to be writable
