@@ -6,25 +6,18 @@ class UnixTracker < TrackerConfigurationBase
   def run
     things = %w(
       ack
-      automake
       awscli
       bash
-      carthage
       cloudfoundry/tap/cf-cli
-      cmake
       coreutils
       ctags
-      diff-so-fancy
       direnv
-      dirmngr
-      docbook-xsl
       ghostscript
       git
       git-duet/tap/git-duet
       glide
       gnupg
       go
-      gpg-agent
       gradle
       haproxy
       htop
@@ -33,16 +26,12 @@ class UnixTracker < TrackerConfigurationBase
       icu4c
       imagemagick
       ios-sim
-      jid
       jmeter
       jq
       jsonpp
       lastpass-cli
-      libusb-compat
       mas
-      maven
       memcached
-      mogenerator
       mysql@5.7
       neovim
       parallel
@@ -56,13 +45,9 @@ class UnixTracker < TrackerConfigurationBase
       shellcheck
       solr@6.6
       ssh-copy-id
-      sshuttle
-      the_platinum_searcher
       ripgrep
-      tig
       tmux
       tree
-      vim
       watch
       wget
       yarn
