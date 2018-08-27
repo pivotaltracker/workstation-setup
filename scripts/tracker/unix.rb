@@ -53,13 +53,11 @@ class UnixTracker < TrackerConfigurationBase
       wget
       yarn
       zlib
-    )
+    ).join(' ')
 
     process_without_output('brew tap pivotaltracker/homebrew-tracker')
 
-    things.each do |thing|
-      brew_install(thing)
-    end
+    process_without_output("brew install #{things}")
 
     process_with_output('pip install virtualenv')
 

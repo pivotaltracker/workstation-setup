@@ -21,11 +21,9 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
       visual-studio-code
       xquartz
       xscope
-    )
+    ).join(" ")
 
-    things.each do |thing|
-      brew_cask_install(thing)
-    end
+    process_without_output("brew cask install #{things}")
   end
 end
 

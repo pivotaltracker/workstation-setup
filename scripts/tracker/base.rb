@@ -12,14 +12,6 @@ class TrackerConfigurationBase
     "#{home}/workspace/workstation-setup"
   end
 
-  def brew_install(app)
-    process_without_output("brew install #{app}")
-  end
-
-  def brew_cask_install(app)
-    process_without_output("brew cask install #{app}")
-  end
-
   def process_without_output(cmd, options = {})
     process(cmd, { out: :error, include_output_in_exception: false }.merge(default_options_for_process_helper).merge(options))
   end
