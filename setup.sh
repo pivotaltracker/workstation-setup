@@ -85,6 +85,9 @@ ${MY_DIR}/scripts/tracker/configuration-ruby.rb
 ${MY_DIR}/scripts/tracker/git-repos.rb
 ${MY_DIR}/scripts/tracker/tracker-setup.rb
 
+# TODO: This is failing because of system ruby install permissions.  Disabling for now
+# ${MY_DIR}/scripts/tracker/install-gitpflow.rb
+
 # For each command line argument, try executing the corresponding script in opt-in/
 #for var in "$@"
 #do

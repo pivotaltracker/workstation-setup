@@ -20,10 +20,6 @@ class ConfigureBashTracker < TrackerConfigurationBase
     end
     process_bash_it('enable plugin rvm')
 
-    # Install brew Ruby and process_helper in the brew-installed version
-    brew_install('ruby')
-    process_without_output('gem install process_helper')
-
     # Install our .inputrc file
     FileUtils.copy("#{repo_root}/files/tracker/.inputrc", "#{home}/.inputrc")
 
