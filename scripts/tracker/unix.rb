@@ -9,6 +9,7 @@ class UnixTracker < TrackerConfigurationBase
       awscli
       bash
       cloudfoundry/tap/cf-cli
+      cmake
       coreutils
       ctags
       direnv
