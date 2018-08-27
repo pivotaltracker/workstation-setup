@@ -1,8 +1,10 @@
 # Running a High Sierra VM for Workstation Setup testing
 
+1. Install VMware Fusion from the "Self Service" application.  Open Finder, go to Applications, and run it.
+1. Run the VMware Fusion app that was installed under Applications.
 1. Install the macOS High Sierra installer from the Mac App Store
 1. Open VMWare Fusion
-	- Update to 8.5.10 if prompted
+	- Update to 8.5.10 if prompted.  ***NOTE:*** You may automatically get a prompt to update to version 10. ***Close*** this prompt, and instead use the VMware Fusion app menu "Check for Updates", which should prompt you to update to 8.5.10.
 1. Click the "+" and select "New..."
 1. Drag and drop the "Install macOS High Sierra.app" bundle onto the "Create New Virtual Machine" prompt presented by VMWare Fusion
 1. Click "Continue"
