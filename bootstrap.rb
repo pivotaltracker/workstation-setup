@@ -74,11 +74,11 @@ class BootstrapWorkstationSetup
   end
 
   def verify_clean_git
-    _, exit_status = process_lite("cd #{repo_root} && git status | grep -E '(to be committed|not staged|untracked)'")
+    output, exit_status = process_lite("git status | grep -E '(to be committed|not staged|untracked)'", raise_on_error: false)
     if exit_status == 0
       # The exit status of the grep will be 0 only if one the repo is dirty.
-      STDERR.puts "\nERROR: There are uncommitted, unstaged or untracked git changes in #{repo_root}.  Please do a `git status` and resolve them, then start over."
-      exit 1
+      raise "\nERROR: There are uncommitted, unstaged or untracked git changes in #{repo_root}. " \
+        "Please do a `git status` and resolve them, then start over.\nRepo state:\n#{output}"
     end
   end
 
@@ -90,7 +90,7 @@ class BootstrapWorkstationSetup
     "#{home}/workspace/workstation-setup"
   end
 
-  def process_lite(cmd, raise_on_error: true, log: false, timeout: 600)
+  def process_lite(cmd, raise_on_error: true, log: true, timeout: 600)
     # A minimal implementation of what ProcessHelper does to use before it's installed
     puts cmd if log
     Open3.popen2e(cmd) do |_, stdout_and_stderr, wait_thr|
