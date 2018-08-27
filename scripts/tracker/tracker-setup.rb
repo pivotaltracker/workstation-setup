@@ -19,9 +19,8 @@ class TrackerSetup < TrackerConfigurationBase
 
     # setup tracker-web
     FileUtils.cd("#{home}/workspace/tracker/apps/tracker-web") do
-      process_without_output('rvm install $(cat .ruby-version)')
-      process_without_output('rvm $(cat .ruby-version) do gem install bundler')
-      process_without_output('rvm $(cat .ruby-version) do bundle install')
+      process_without_output('gem install bundler')
+      process_without_output('bundle install')
     end
 
     # Run direnv allow on all directories that require it.

@@ -68,7 +68,6 @@ ${MY_DIR}/scripts/tracker/configuration-osx.rb
 # Log in to LastPass and pull down the private SSH key.
 set +e
 source "${HOME}/.bash_profile"
-source "$HOME/.rvm/scripts/rvm"
 set -e
 echo "Enter your username for LastPass login (without @pivotal.io):"
 read username
@@ -87,6 +86,9 @@ ${MY_DIR}/scripts/tracker/tracker-setup.rb
 
 # TODO: This is failing because of system ruby install permissions.  Disabling for now
 # ${MY_DIR}/scripts/tracker/install-gitpflow.rb
+
+source ${MY_DIR}/scripts/common/configuration-bash.sh
+source ${MY_DIR}/scripts/opt-in/ruby.sh
 
 # For each command line argument, try executing the corresponding script in opt-in/
 #for var in "$@"

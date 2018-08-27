@@ -10,7 +10,7 @@ function update_git_repos() {
   local none="\033[0m"
 
   find ${WORKSPACE} -name .git -type d -prune -depth 2 | while read git_dir; do
-    cd $git_dir/.. 2>/dev/null # ignore stderr to supress RVM
+    cd $git_dir/..
     echo -e "Pulling: ${green}${PWD}${none}"
     git pull --prune
     cd $OLDPWD
