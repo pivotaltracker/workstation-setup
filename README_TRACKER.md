@@ -56,6 +56,13 @@ git remote set-url origin git@github.com:pivotaltracker/workstation-setup.git
 ## Deploy Spy Configuration
 Follow steps in [Tracker Docs](https://docs.trackernonprod.com/#general/configure-deploy-spy/)
 
+## ITerm2 Configuration
+Open Preferences:
+1. Appearance -> Tabs: Check "Show tab bar even when there is only one tab"
+1. Profiles -> Default -> General -> Working Directory: Select "Reuse previous session's directory"
+1. Profiles -> Default -> Terminal -> Scrollback Buffer -> Scrollback lines: Check
+   "Unlimited Scrollback"
+
 ## IDE Installation and Launchers:
 1. Open the JetBrains Toolbox and press `Install` on *RubyMine* and *IntelliJ IDEA Ultimate*
 1. Open RubyMine from the toolbox
