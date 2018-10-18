@@ -63,6 +63,9 @@ class UnixTracker < TrackerConfigurationBase
     # Copy .vimrc file
     FileUtils.copy("#{repo_root}/files/tracker/.vimrc", "#{home}/.vimrc")
 
+    # Copy my.cnf file
+    FileUtils.copy("#{repo_root}/files/mysql/my.cnf", "/usr/local/etc/my.cnf")
+
     # Install fly
     process_without_output("wget -O /usr/local/bin/fly 'https://cd.gcp.trackerred.com/api/v1/cli?arch=amd64&platform=darwin'")
     process_without_output('chmod +x /usr/local/bin/fly')
