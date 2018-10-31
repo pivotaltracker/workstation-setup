@@ -40,7 +40,6 @@ class UnixTracker < TrackerConfigurationBase
       proctools
       pstree
       python@2
-      qt@5.5
       redis
       s3cmd
       shellcheck

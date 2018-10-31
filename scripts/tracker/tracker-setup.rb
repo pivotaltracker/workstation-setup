@@ -4,9 +4,6 @@ require_relative './base.rb'
 
 class TrackerSetup < TrackerConfigurationBase
   def run
-    # setup Qt
-    process_without_output('brew link --force qt@5.5')
-
     # setup mysql
     process_without_output('brew link --force mysql@5.7')
     process_without_output('brew services start mysql@5.7')
