@@ -58,6 +58,8 @@ class UnixTracker < TrackerConfigurationBase
 
     process_without_output("brew install #{things}")
 
+    process_without_output("brew link --force solr@6.6")
+
     process_with_output('pip install virtualenv')
 
     # Copy .vimrc file
