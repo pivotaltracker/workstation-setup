@@ -32,6 +32,9 @@ class TrackerSetup < TrackerConfigurationBase
       process_without_output('bundle install')
     end
 
+    # Install Node
+    process_with_output('nvm install 10')
+
     # Run direnv allow on all directories that require it.
     Dir.glob("#{home}/workspace/tracker/apps/tracker-web/**/.envrc").each do |envrc|
       FileUtils.cd(File.dirname(envrc)) do

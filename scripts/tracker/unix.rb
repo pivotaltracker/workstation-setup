@@ -35,6 +35,7 @@ class UnixTracker < TrackerConfigurationBase
       memcached
       mysql@5.7
       neovim
+      nvm
       parallel
       proctools
       pstree
