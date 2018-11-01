@@ -15,6 +15,7 @@ class ApplicationsCommonTracker < TrackerConfigurationBase
       google-cloud-sdk
       istat-menus5
       java8
+      ngrok
       spectacle
       the-unarchiver
       vagrant
