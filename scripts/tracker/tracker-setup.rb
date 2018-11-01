@@ -38,12 +38,6 @@ class TrackerSetup < TrackerConfigurationBase
         process_without_output('direnv allow')
       end
     end
-
-    # Install elm
-    process_without_output('yarn global add elm@0.18.0')
-    process_without_output('yarn global add elm-test@0.18.2')
-    process_without_output('yarn global add elm-webpack-loader@4.3.1')
-    process_without_output('yarn global add elm-hot-loader@0.5.4')
   end
 
   private
