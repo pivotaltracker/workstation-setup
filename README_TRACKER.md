@@ -64,21 +64,12 @@ Open Preferences:
    "Unlimited Scrollback"
 
 ## IDE Installation and Launchers:
-1. Open the JetBrains Toolbox and press `Install` on *RubyMine* and *IntelliJ IDEA Ultimate*
-1. Open RubyMine from the toolbox
-1. Right click on the RubyMine icon in the dock and click `Options -> Keep in Dock` and move it to
-   the left of *SublimeText* in the dock.
+1. Open RubyMine
 1. In the menu bar, click `Tools -> Create Command-line Launcher...` then click `OK` (note you may
    need to click `OK` to override if a script already exists.)
-1. Open IntelliJ from the toolbox
+1. Open IntelliJ
 1. In the menu bar, click `Tools -> Create Command-line Launcher...` then click `OK` (note you may
    need to click `OK` to override if a script already exists.)
-
-## Run Pivotal IDE Prefs
-1. **make sure all the IDEs are shut down**
-1. `cd` into `~/workspace/pivotal_ide_prefs`
-1. Run the command for IntelliJ `cli/bin/ide_prefs --ide=intellij install`
-1. Run the command for RubyMine `cli/bin/ide_prefs --ide=rubymine install`
 
 ## IntelliJ and Rubymine Common Manual Setup
 
