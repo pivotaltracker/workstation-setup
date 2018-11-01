@@ -32,6 +32,10 @@ workstation-setup manually.
 1. Follow the instructions in [Post-Install Steps Before Cutting an image](#post-install-steps-before-cutting-an-image)
    and [Post-Imaging Steps](#post-imaging-steps).
 
+1. If the setup fails with an error around NVM or Node, install Node 10 and try the script again
+    ```sh
+    nvm install 10
+    ```
 ## Post-Install Steps Before Cutting an image
 Run these steps only if you are in the process of cutting a fresh DeployStudio image
 
