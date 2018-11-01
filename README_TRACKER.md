@@ -168,6 +168,9 @@ Open `Preferences -> Plugins`.
 1. Go to `Energy Saver -> Power Adapter`
     - Check on `Prevent computer from sleeping automatically when the display is off`
 
+## Key Repeat Enable
+* `defaults write -g ApplePressAndHoldEnabled -bool false`
+
 ## Clipy
 1. Change Clipy main shortcut to "Ctrl-Option-Cmd-V" so it doesn't override Jetbrains default keystroke
   for clipboard.
