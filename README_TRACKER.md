@@ -62,6 +62,7 @@ Follow steps in [Tracker Docs](https://docs.trackernonprod.com/#general/configur
 
 ## ITerm2 Configuration
 Open Preferences:
+1. General -> Services: Ensure you uncheck "Check for updates" and "Update to beta test versions"
 1. Appearance -> Tabs: Check "Show tab bar even when there is only one tab"
 1. Profiles -> Default -> General -> Working Directory: Select "Reuse previous session's directory"
 1. Profiles -> Default -> Terminal -> Scrollback Buffer -> Scrollback lines: Check
