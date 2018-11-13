@@ -2,7 +2,6 @@
 # See also tracker-frontend.bash and tracker-platform.bash
 
 export WORKSPACE=${WORKSPACE:-$HOME/workspace}
-export ENV_DIRECTORY="${WORKSPACE}/p-tracker/config/environments"
 
 function update_git_repos() {
   local green="\033[0;32m"
