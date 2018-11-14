@@ -68,7 +68,7 @@ function _load_github_ssh_key_from_lastpass() {
   trap 'lpass logout --force; rm -rf "${tmpdir}"' EXIT INT TERM HUP
 }
 
-function github() {
+function loadkey_github() {
   echo 'Loading personal github key, see docs at https://docs.trackernonprod.com/#development/personal_github_account_setup/ ...'
   username=$1
   if [ -z "${username}" ]; then
