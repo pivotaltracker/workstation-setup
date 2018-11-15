@@ -2,6 +2,7 @@
 
 authors:
   bc: Benjamin Cutler; bcutler
+  cb: Courtney Bregar; cbregar
   cwag: Chad Wagner; cwagner
   caw: Chad Woolley; cwoolley
   thewoolleyman: Chad Woolley; thewoolleyman
@@ -23,7 +24,6 @@ authors:
   jt: Jeff Turley; jturley
   jw: Joanne Webb; jwebb
   kb: Kira Boyle; kboyle
-  lc: Lisa Crispin; lcrispin
   mce: Matthew Conger-Eldeen; mcongereldeen
   mg: Matt Gist; mgist
   mm: Mark Michael; mmichael
@@ -34,7 +34,6 @@ authors:
   mw: Morgan Whitney; mwhitney
   ns: Nick Seemiller; nseemiller
   pn: Piper Niehaus; pniehaus
-  se: Sumner Evans; jevans
   tc: Tom Charles; tcharles
   to: Thomas Osugi; tosugi
   vr: Vera Reynolds; vreynolds
@@ -43,5 +42,4 @@ email:
 email_addresses:
   thewoolleyman: thewoolleyman@gmail.com
   oppegard: oppegard@gmail.com
-  ge: greg.eng@gmail.com
   mp: terinopace@gmail.com
