@@ -84,6 +84,7 @@ Follow steps in [Tracker Docs](https://docs.trackernonprod.com/#general/configur
 
 ## ITerm2 Configuration
 Open Preferences:
+
 1. General -> Services: Ensure you uncheck "Check for updates" and "Update to beta test versions"
 1. Appearance -> Tabs: Check "Show tab bar even when there is only one tab"
 1. Profiles -> Default -> General -> Working Directory: Select "Reuse previous session's directory"
@@ -266,6 +267,11 @@ Open `Preferences -> Plugins`.
 1. Launch the Spectacle app
 1. Follow the instructions to give it Accessibility permissions
 
+## Textmate
+
+* Preferences -> Projects -> Include Files Matching: `{*,.*}`
+* Configure autosave: add `saveOnBlur = true` to top of `~/Library/Application\ Support/TextMate/Global.tmProperties`
+
 ## Cleanup
 1. Clear Chrome and Safari browser histories
 1. Remove SSH keys (`ssh-add -D`)
@@ -278,6 +284,7 @@ Run these steps after imaging a machine
 ## Set the computer name
 
 Open up iTerm and run the following command:
+
 ```sh
 $HOME/workspace/workstation-setup/scripts/tracker/set-computer-name.rb
 ```
