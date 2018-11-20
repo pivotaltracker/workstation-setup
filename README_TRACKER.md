@@ -6,12 +6,21 @@ This project automates the process of setting up a new Pivotal machine using a s
 
 ## Core Principles
 
+
 * Prefer the defaults (or more sameness) to eliminate controversy and conflict 
   * Always prefer the default keymaps/shortcuts/settings
 * If default keymaps conflict, the ones defined in the primary developer tools (Jetbrains IDEs) and/or designer tools (Sketch/Photoshop/etc) should win and not be overridden by other apps
 * Base tracker workstation setup has minimal changes on top of standard workstation-setup, only stuff that is truly necessary and/or useful across all pods.
 * Customizations on the main workstations should be disjoint, i.e. don't write code that automatically reverts a config or setting from the base setup; instead open a discussion about changing or removing the default.
+* Not everything is refreshed/updated daily.  The philosophy of the upstream `workstation-setup` repo is specifically that
+  it is **NOT** intended to be re-run on existing workstations.
+* Not everything has to be automated, it's OK to just put manual steps for something in this README_TRACKER.md file, but
+  if it's critical to be done, make sure you record it somehow!  
 * Keep it simple, stupid!
+
+## Important Guidelines
+
+* We manage all Jetbrains IDEs via Jetbrains Toolbox.  Do not install them manually or via brew/cask.
 
 ## Getting Started
 **We recommend you use the pre-created workstation-setup image on DeployStudio. To do so, please follow the steps in
