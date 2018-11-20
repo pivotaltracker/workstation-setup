@@ -26,6 +26,19 @@ This project automates the process of setting up a new Pivotal machine using a s
 **We recommend you use the pre-created workstation-setup image on DeployStudio. To do so, please follow the steps in
 [Image a Workstation](https://docs.trackernonprod.com/#general/image-a-workstation/).**
 
+## Mojave Notes
+
+Mojave isn't officially supported yet, but here are some gotchas for it:
+
+### Mysql2 Gem Install on Mojave
+
+* Review [this stackoverflow comment](https://stackoverflow.com/questions/30834421/error-when-trying-to-install-app-with-mysql2-gem/39628463#39628463).
+* However, ***NOTE*** of those suggestions seems to work except [this one](https://stackoverflow.com/questions/30834421/error-when-trying-to-install-app-with-mysql2-gem/39628463#comment67227723_39628463):
+  * `export MYSQL_GEM_VERSION=0.4.10` ...or whatever is in the Gemfile 
+  * `gem install mysql2 -v ${MYSQL_GEM_VERSION} -- --with-ldflags=-L/usr/local/opt/openssl/lib --with-cppflags=-I/usr/local/opt/openssl/include`
+* That means you'll have to wait for the `setup.sh` run to fail, go to the tracker-web folder, run that
+  manually to get mysql2 native gem installed for tracker, then re-run `setup.sh`
+
 ### Manually running workstation-setup
 If you are developing workstation-setup or want to add customizations to it for your own laptop you will need to run
 workstation-setup manually.
