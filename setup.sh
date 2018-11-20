@@ -53,7 +53,6 @@ source ${MY_DIR}/scripts/common/applications-common.sh
 
 # Install the Tracker desktop applications.
 ${MY_DIR}/scripts/tracker/applications-common.rb
-${MY_DIR}/scripts/tracker/rubymine.sh
 
 source ${MY_DIR}/scripts/common/unix.sh
 
@@ -101,7 +100,6 @@ ${MY_DIR}/scripts/tracker/tracker-setup.rb
 #    fi
 #done
 
-cp ${MY_DIR}/files/tracker/com.apple.dock.plist ~/Library/Preferences/
 ${MY_DIR}/scripts/tracker/finished.rb
 
 if (( SKIP_ANALYTICS == 0 )); then
