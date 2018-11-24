@@ -117,11 +117,11 @@ Open `Preferences` and change the following settings:
 
 * Appearance & Behavior
   * Appearance
-    * Check *Override default fonts by (not recommended)*
+    * Check *Use custom fonts*
     * Change the font size to 14
 * Editor
   * General
-    * Set *Maximum number of contents to keep in clipboard* to `100`
+    * Limits -> Set *Maximum number of contents to keep in clipboard* to `100`
 
 ### Plugins
 Open `Preferences -> Plugins`.
