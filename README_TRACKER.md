@@ -122,6 +122,9 @@ Open `Preferences` and change the following settings:
 * Editor
   * General
     * Limits -> Set *Maximum number of contents to keep in clipboard* to `100`
+* Languages & Frameworks
+  * Javascript
+    * ESLint -> Enable
 
 ### Plugins
 Open `Preferences -> Plugins`.
@@ -132,6 +135,7 @@ Open `Preferences -> Plugins`.
   * .ignore
   * Autoscroll Save
   * Presentation Assistant (Possibly visually noisy, can remove we get negative feedback)
+  * Karma
 * **Disable** the following plugins
   * CVS Integration
   * Haml
