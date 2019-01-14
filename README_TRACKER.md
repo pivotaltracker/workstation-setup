@@ -46,7 +46,12 @@ workstation-setup manually.
 1. Follow steps 1-8 in
    [Image a Workstation](https://docs.trackernonprod.com/#general/image-a-workstation/).
    However, on step 5, choose *Individual Workstation High Sierra*.
-1. Open up `Terminal.app` and run the following command:
+1. Open up `Terminal.app` and run the following command to load your github key:
+
+    ```sh
+    loadkey yourpivotalemail # without @pivotal.io
+    ```
+1. Run the following command:
 
     ```sh
     curl -s https://raw.githubusercontent.com/pivotaltracker/workstation-setup/master/bootstrap.rb -o /tmp/bootstrap.rb && chmod +x /tmp/bootstrap.rb && /tmp/bootstrap.rb && cd ~/workspace/workstation-setup && ./setup.sh
