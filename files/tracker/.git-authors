@@ -3,40 +3,28 @@
 authors:
   bc: Benjamin Cutler; bcutler
   cb: Courtney Bregar; cbregar
-  cwag: Chad Wagner; cwagner
   caw: Chad Woolley; cwoolley
   thewoolleyman: Chad Woolley; thewoolleyman
   ct: Chris Tong; ctong
   dlp: Dan Podsedly; dpodsedly
   dp: David Poore; dpoore
-  dfa: David Farber; dfarber
-  db: Devin Brown; debrown
   df: Duncan Fedde; dfedde
   ed: Eric Dattore; edattore
   gi: Glen Ivey; givey
-  go: Glenn Oppegard; goppegard
-  oppegard: Glenn Oppegard; oppegard
   ge: Greg Eng; geng
-  jm: Jacob Morris; jmorris
-  sum: Jacky Sum; jsum
   jh: Jeanette Head; jhead
   jsw: Justin Wang; juswang
   jt: Jeff Turley; jturley
   jw: Joanne Webb; jwebb
-  kb: Kira Boyle; kboyle
+  lw: Luke Winikates; lwinikates
   mce: Matthew Conger-Eldeen; mcongereldeen
   mg: Matt Gist; mgist
   mm: Mark Michael; mmichael
-  ms: Mark Sliva; msliva
   mh: Matt Heidemann; mheidemann
   mk: Megan Kallis; mkallis
-  mp: Michael Pace; mpace
   mw: Morgan Whitney; mwhitney
   ns: Nick Seemiller; nseemiller
-  pn: Piper Niehaus; pniehaus
-  tc: Tom Charles; tcharles
   to: Thomas Osugi; tosugi
-  vr: Vera Reynolds; vreynolds
 email:
   domain: pivotal.io
 email_addresses:
