@@ -31,7 +31,7 @@ source ${MY_DIR}/scripts/common/homebrew.sh
 source ${MY_DIR}/scripts/common/configuration-bash.sh
 
 # Run our custom bash configuration script.
-${MY_DIR}/scripts/tracker/configuration-bash.rb
+source ${MY_DIR}/scripts/tracker/configuration-bash.sh
 
 # Place any applications that require the user to type in their password here
 brew tap caskroom/cask
@@ -41,29 +41,29 @@ brew cask install zoomus
 source ${MY_DIR}/scripts/common/git.sh
 
 # Run our custom git configuration script.
-${MY_DIR}/scripts/tracker/git.rb
+source ${MY_DIR}/scripts/tracker/git.sh
 
 source ${MY_DIR}/scripts/common/git-aliases.sh
 
 # Run our custom git aliases script.
-${MY_DIR}/scripts/tracker/git-aliases.rb
+source ${MY_DIR}/scripts/tracker/git-aliases.sh
 
 source ${MY_DIR}/scripts/common/cloud-foundry.sh
 source ${MY_DIR}/scripts/common/applications-common.sh
 
 # Install the Tracker desktop applications.
-${MY_DIR}/scripts/tracker/applications-common.rb
+source ${MY_DIR}/scripts/tracker/applications-common.sh
 
 source ${MY_DIR}/scripts/common/unix.sh
 
 # Install the Tracker command line applications.
-${MY_DIR}/scripts/tracker/unix.rb
+source ${MY_DIR}/scripts/tracker/unix.sh
 
 source ${MY_DIR}/scripts/common/configuration-osx.sh
 source ${MY_DIR}/scripts/common/configurations.sh
 
 # Do configuration of macOS specific to Tracker.
-${MY_DIR}/scripts/tracker/configuration-osx.rb
+source ${MY_DIR}/scripts/tracker/configuration-osx.sh
 
 # Log in to LastPass and pull down the private SSH key.
 set +e
@@ -73,16 +73,16 @@ echo "Enter your username for LastPass login (without @pivotal.io):"
 read username
 
 # TODO: try to use the alias instead of this.
-_load_github_ssh_key_from_lastpass ${username}
+loadkey_github ${username}
 
-${MY_DIR}/scripts/tracker/app-store-setup.rb
+source ${MY_DIR}/scripts/tracker/app-store-setup.sh
 
 # Do Ruby configuration
-${MY_DIR}/scripts/tracker/configuration-ruby.rb
+source ${MY_DIR}/scripts/tracker/configuration-ruby.sh
 
 # Clone the Tracker repos.
-${MY_DIR}/scripts/tracker/git-repos.rb
-${MY_DIR}/scripts/tracker/tracker-setup.rb
+source ${MY_DIR}/scripts/tracker/git-repos.sh
+source ${MY_DIR}/scripts/tracker/tracker-setup.sh
 
 # TODO: This is failing because of system ruby install permissions.  Disabling for now
 # ${MY_DIR}/scripts/tracker/install-gitpflow.rb
@@ -100,7 +100,7 @@ ${MY_DIR}/scripts/tracker/tracker-setup.rb
 #    fi
 #done
 
-${MY_DIR}/scripts/tracker/finished.rb
+source ${MY_DIR}/scripts/tracker/finished.sh
 
 if (( SKIP_ANALYTICS == 0 )); then
     source ${MY_DIR}/scripts/helpers/google-analytics.sh ${clientID} finish $@

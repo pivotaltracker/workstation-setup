@@ -1,3 +1,6 @@
+git config --global --remove-section duet.env
+
+
 #!/usr/bin/env ruby
 
 require 'fileutils'
