@@ -297,3 +297,11 @@ Open up iTerm and run the following command:
 ```sh
 $HOME/workspace/workstation-setup/scripts/tracker/set-computer-name.rb
 ```
+
+# Stuff that has happened since the last image that needs to be done manually for now
+
+Sticking some things here for easy reference for .  TODO: clean up and add to proper section above, or automate
+
+* Ruby 2.5.5 upgrade (maybe? see [this slack thread](https://pivotal.slack.com/archives/C0LD61RAA/p1553797493012600?thread_ts=1553624356.146800&cid=C0LD61RAA)): `tw && brew update && brew upgrade ruby-build && rbenv install 2.5.5 && cd .. && cd - && gem install bundler -v 1.17.3 && bundle`
+* Mysql gem compile: See [this slack thread](https://pivotal.slack.com/archives/C0LD61RAA/p1554135884040000)
+* loadkey_github isn't available (TODO: what exactly needs to be done?)
