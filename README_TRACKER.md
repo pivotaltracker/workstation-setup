@@ -304,4 +304,4 @@ Sticking some things here for easy reference for .  TODO: clean up and add to pr
 
 * Ruby 2.5.5 upgrade (maybe? see [this slack thread](https://pivotal.slack.com/archives/C0LD61RAA/p1553797493012600?thread_ts=1553624356.146800&cid=C0LD61RAA)): `tw && brew update && brew upgrade ruby-build && rbenv install 2.5.5 && cd .. && cd - && gem install bundler -v 1.17.3 && bundle`
 * Mysql gem compile: See [this slack thread](https://pivotal.slack.com/archives/C0LD61RAA/p1554135884040000)
-* loadkey_github isn't available (TODO: what exactly needs to be done?)
+* loadkey_github: `cd ~/workspace/workstation-setup && git pull && cp ~/workspace/workstation-setup/files/tracker/.bash_it/custom/tracker-ssh-keys.bash ~/.bash_it/custom/tracker-ssh-keys.bash` (TODO: this should just be renamed to loadkey, and we should also make all the bash_it functions just executables in a common dir on the path so all that is needed to avoid this type of thing in the future is a git pull)
